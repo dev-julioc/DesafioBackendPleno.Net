@@ -1,5 +1,5 @@
-﻿namespace MoviesRental.Query.Domain.Models;
-public class Dvd
+﻿namespace MoviesRental.Domain.Entities.Read;
+public class DvdRead
 {
     public string Id { get; set; }
     public string Title { get; private set; }

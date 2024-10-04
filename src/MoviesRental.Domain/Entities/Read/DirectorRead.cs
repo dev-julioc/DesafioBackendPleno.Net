@@ -1,5 +1,5 @@
-﻿namespace MoviesRental.Query.Domain.Models;
-public class Director
+﻿namespace MoviesRental.Domain.Entities.Read;
+public class DirectorRead
 {
     public string Id { get; set; }
     public string FullName { get; set; }

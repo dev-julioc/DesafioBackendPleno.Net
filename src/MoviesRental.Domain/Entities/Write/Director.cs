@@ -12,6 +12,10 @@ public sealed class Director : Entity
 
     public const int MIN_LENGTH = 3;
     public const int MAX_LENGTH = 30;
+    public const string EMPTY_STRING_ERROR_MESSAGE = "{PropertyName} is required!";
+    public const string INVALID_ERROR_MESSAGE = "Invalid {PropertyName}!";
+    public const string MIN_LENGTH_ERROR_MESSAGE = "Invalid {PropertyName}! Minimum {MinLength} characteres!";
+    public const string MAX_LENGTH_ERROR_MESSAGE = "Invalid {PropertyName}! Maximum {MinLength} characteres!";
 
     protected Director()
     { }
@@ -46,8 +50,8 @@ public sealed class Director : Entity
     private void Validation(string value)
     {
         DomainValidatorException.When(string.IsNullOrEmpty(value), $"{value} is required!");
-        DomainValidatorException.When(value.Length < MIN_LENGTH, $"Invalid {value}! Minimum 3 characteres!");
-        DomainValidatorException.When(value.Length > MAX_LENGTH, $"Invalid {value}! Maximum 30 characteres!");
+        DomainValidatorException.When(value.Length < MIN_LENGTH, $"Invalid {value}! Minimum {MIN_LENGTH} characteres!");
+        DomainValidatorException.When(value.Length > MAX_LENGTH, $"Invalid {value}! Maximum {MAX_LENGTH} characteres!");
         DomainValidatorException.When(!Regex.IsMatch(value, @"^[\p{L} ]+$"), $"Invalid {value}!");
     }
 

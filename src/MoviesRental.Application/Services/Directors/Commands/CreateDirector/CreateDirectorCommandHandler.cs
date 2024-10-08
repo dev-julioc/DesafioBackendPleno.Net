@@ -7,17 +7,15 @@ namespace MoviesRental.Application.Services.Directors.Commands.CreateDirector;
 public class CreateDirectorCommandHandler : IRequestHandler<CreateDirectorCommand, ResultService<CreateDirectorReponse>>
 {
     private readonly IDirectorWriteRepository _directorRepository;
-    private readonly CreateDirectorCommandValidation _validator;
 
-    public CreateDirectorCommandHandler(IDirectorWriteRepository directorRepository, CreateDirectorCommandValidation validator)
+    public CreateDirectorCommandHandler(IDirectorWriteRepository directorRepository)
     {
         _directorRepository = directorRepository ?? throw new ArgumentNullException(nameof(directorRepository));
-        _validator = validator ?? throw new ArgumentNullException(nameof(validator));
     }
 
     public async Task<ResultService<CreateDirectorReponse>> Handle(CreateDirectorCommand request, CancellationToken cancellationToken)
     {
-        var validate = _validator.Validate(request);
+        var validate = new CreateDirectorCommandValidation().Validate(request);
 
         if (!validate.IsValid)
             return ResultService.RequestError<CreateDirectorReponse>("Fields validate error!", validate);

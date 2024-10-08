@@ -7,17 +7,15 @@ namespace MoviesRental.Application.Services.Dvds.Commands.CreateDvd;
 public class CreateDvdCommandHandler : IRequestHandler<CreateDvdCommand, ResultService<CreateDvdResponse>>
 {
     private readonly IDvdWriteRepository _repository;
-    private readonly CreateDvdCommandValidation _validator;
 
-    public CreateDvdCommandHandler(IDvdWriteRepository repository, CreateDvdCommandValidation validator)
+    public CreateDvdCommandHandler(IDvdWriteRepository repository)
     {
         _repository = repository ?? throw new ArgumentNullException(nameof(repository));
-        _validator = validator ?? throw new ArgumentNullException(nameof(validator));
     }
 
     public async Task<ResultService<CreateDvdResponse>> Handle(CreateDvdCommand request, CancellationToken cancellationToken)
     {
-        var validate = _validator.Validate(request);
+        var validate = new CreateDvdCommandValidation().Validate(request);
 
         if (!validate.IsValid)
             return ResultService.RequestError<CreateDvdResponse>("Fields validate error!", validate);

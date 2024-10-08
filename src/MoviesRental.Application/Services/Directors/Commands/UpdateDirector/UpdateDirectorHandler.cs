@@ -6,17 +6,15 @@ namespace MoviesRental.Application.Services.Directors.Commands.UpdateDirector;
 public class UpdateDirectorHandler : IRequestHandler<UpdateDirectorCommand, ResultService<UpdateDirectorResponse>>
 {
     private readonly IDirectorWriteRepository _repository;
-    private readonly UpdateDirectorValidation _validator;
 
-    public UpdateDirectorHandler(IDirectorWriteRepository repository, UpdateDirectorValidation validator)
+    public UpdateDirectorHandler(IDirectorWriteRepository repository)
     {
         _repository = repository ?? throw new ArgumentNullException(nameof(repository));
-        _validator = validator ?? throw new ArgumentNullException(nameof(validator));
     }
 
     public async Task<ResultService<UpdateDirectorResponse>> Handle(UpdateDirectorCommand request, CancellationToken cancellationToken)
     {
-        var validate = _validator.Validate(request);
+        var validate = new UpdateDirectorValidation().Validate(request);
 
         if (!validate.IsValid)
             return ResultService.RequestError<UpdateDirectorResponse>("Fields validate error!", validate);

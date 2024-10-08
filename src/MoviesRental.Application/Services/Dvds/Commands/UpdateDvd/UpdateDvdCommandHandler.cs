@@ -4,22 +4,20 @@ using MoviesRental.Domain.Interfaces.IDirector;
 using MoviesRental.Domain.Interfaces.IDvd;
 
 namespace MoviesRental.Application.Services.Dvds.Commands.UpdateDvd;
-public class UpdateDvdHandler : IRequestHandler<UpdateDvdCommand, ResultService<UpdateDvdResponse>>
+public class UpdateDvdCommandHandler : IRequestHandler<UpdateDvdCommand, ResultService<UpdateDvdResponse>>
 {
     private readonly IDvdWriteRepository _dvdRepository;
-    private readonly UpdateDvdCommandValidation _validator;
     private readonly IDirectorWriteRepository _directorRepository;
 
-    public UpdateDvdHandler(IDvdWriteRepository dvdRepository, UpdateDvdCommandValidation validator, IDirectorWriteRepository directorRepository)
+    public UpdateDvdCommandHandler(IDvdWriteRepository dvdRepository, IDirectorWriteRepository directorRepository)
     {
         _dvdRepository = dvdRepository ?? throw new ArgumentNullException(nameof(dvdRepository));
-        _validator = validator ?? throw new ArgumentNullException(nameof(validator));
         _directorRepository = directorRepository ?? throw new ArgumentNullException(nameof(directorRepository));
     }
 
     public async Task<ResultService<UpdateDvdResponse>> Handle(UpdateDvdCommand request, CancellationToken cancellationToken)
     {
-        var validate = _validator.Validate(request);
+        var validate = new UpdateDvdCommandValidation().Validate(request);
 
         if (!validate.IsValid)
             return ResultService.RequestError<UpdateDvdResponse>("Fields validate error!", validate);

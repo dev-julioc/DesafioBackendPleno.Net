@@ -15,7 +15,7 @@ public class DirectorWriteRepository : IDirectorWriteRepository
 
     public async Task<Director?> GetDirectorWithMoviesAsync(Guid id)
     {
-        return await _context.Directors.AsNoTracking()
+        return await _context.Directors
             .Include(x => x.Dvds)
             .Where(x => x.Id.Equals(id))
             .FirstOrDefaultAsync();

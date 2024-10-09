@@ -14,6 +14,14 @@ public sealed class Dvd : Entity
 
     public const int MIN_TITLE_LENGTH = 3;
     public const int MAX_TITLE_LENGTH = 50;
+    public const string EMPTY_STRING_ERROR_MESSAGE = "{PropertyName} is required!";
+    public const string INVALID_ERROR_MESSAGE = "Invalid {PropertyName}!";
+    public const string MIN_LENGTH_ERROR_MESSAGE = "Invalid {PropertyName}! Minimum {MinLength} characteres!";
+    public const string MAX_LENGTH_ERROR_MESSAGE = "Invalid {PropertyName}! Maximum {MinLength} characteres!";
+    public const string GENRE_ERROR_MESSAGE = "Invalid genre!";
+    public const int GENRE_MIN_NUMBER = 0;
+    public const int GENRE_MAX_NUMBER = 18;
+    public const int COPIES_ERROR_NUMBER = -1;
 
     protected Dvd()
     { }
@@ -57,7 +65,7 @@ public sealed class Dvd : Entity
     public void UpdateGenre(int genre)
     {
         DomainValidatorException.When(!IsAvailable, $"Dvd {Title} is not available!");
-        DomainValidatorException.When(genre < 0 || genre > 18, "Invalid genre!");
+        DomainValidatorException.When(genre < GENRE_MIN_NUMBER || genre > GENRE_MAX_NUMBER, "Invalid genre!");
 
         Genre = genre switch
         {
@@ -107,7 +115,7 @@ public sealed class Dvd : Entity
         UpdatedAt = DateTime.UtcNow;
     }
 
-    private void UpdateCopies(int copies)
+    public void UpdateCopies(int copies)
     {
         DomainValidatorException.When(!IsAvailable, $"Dvd {Title} is not available!");
         DomainValidatorException.When(copies < 0, "Invalid copies! Must be greater than 0!");

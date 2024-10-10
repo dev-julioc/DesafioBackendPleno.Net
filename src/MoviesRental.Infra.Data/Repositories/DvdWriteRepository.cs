@@ -3,11 +3,11 @@ using MoviesRental.Domain.Interfaces.IDvd;
 using MoviesRental.Infra.Data.Context;
 
 namespace MoviesRental.Infra.Data.Repositories;
-public class DvdRepository : IDvdWriteRepository
+public class DvdWriteRepository : IDvdWriteRepository
 {
     private readonly AppWriteDbContext _context;
 
-    public DvdRepository(AppWriteDbContext context)
+    public DvdWriteRepository(AppWriteDbContext context)
     {
         _context = context ?? throw new ArgumentNullException(nameof(context));
     }

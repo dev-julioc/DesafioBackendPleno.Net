@@ -1,8 +1,9 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MoviesRental.Application.Services.Dvds.Commands.CreateDvd;
-using System;
-using System.Reflection;
+using MoviesRental.Domain.Interfaces.IDirector;
+using MoviesRental.Domain.Interfaces.IDvd;
+using MoviesRental.Infra.Data.Repositories;
 
 namespace MoviesRental.Infra.IoC;
 public static class DependencyInjection
@@ -27,6 +28,10 @@ public static class DependencyInjection
         //        }
         //    });
         //});
+        services.AddScoped<IDirectorWriteRepository, DirectorWriteRepository>();
+        services.AddScoped<IDvdWriteRepository, DvdWriteRepository>();
+
+        
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(CreateDvdCommand).Assembly));
 
         return services;

@@ -27,7 +27,10 @@ public class UpdateReadDirectorCommandHandler : IRequestHandler<UpdateReadDirect
         readDirector.FullName = request.FullName;
         readDirector.UpdatedAt  = request.UpdateAt;
 
-        await _repository.UpdateDirectorAsync(readDirector);
+        var response = await _repository.UpdateDirectorAsync(readDirector);
+
+        if (!response)
+            return ResultService.Fail<bool>("Failed to update director!");
 
         return ResultService.Ok(true);
     }

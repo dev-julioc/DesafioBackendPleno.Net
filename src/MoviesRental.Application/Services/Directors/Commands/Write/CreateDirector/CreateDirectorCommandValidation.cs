@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using MoviesRental.Domain.Entities.Write;
 
-namespace MoviesRental.Application.Services.Directors.Commands.CreateDirector;
+namespace MoviesRental.Application.Services.Directors.Commands.Write.CreateDirector;
 public class CreateDirectorCommandValidation : AbstractValidator<CreateDirectorCommand>
 {
     public CreateDirectorCommandValidation()

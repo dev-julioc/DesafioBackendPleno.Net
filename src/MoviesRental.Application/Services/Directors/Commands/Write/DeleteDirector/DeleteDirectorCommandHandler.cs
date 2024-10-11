@@ -2,7 +2,7 @@
 using MoviesRental.Application.Services.Results;
 using MoviesRental.Domain.Interfaces.IDirector;
 
-namespace MoviesRental.Application.Services.Directors.Commands.DeleteDirector;
+namespace MoviesRental.Application.Services.Directors.Commands.Write.DeleteDirector;
 public class DeleteDirectorCommandHandler : IRequestHandler<DeleteDirectorCommand, ResultService>
 {
     private readonly IDirectorWriteRepository _writeRepository;

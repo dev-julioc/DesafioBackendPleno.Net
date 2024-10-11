@@ -1,8 +1,9 @@
 ﻿using MediatR;
+using MoviesRental.Application.Services.Directors.Commands.UpdateDirector;
 using MoviesRental.Application.Services.Results;
 using MoviesRental.Domain.Interfaces.IDirector;
 
-namespace MoviesRental.Application.Services.Directors.Commands.UpdateDirector;
+namespace MoviesRental.Application.Services.Directors.Commands.Write.UpdateDirector;
 public class UpdateDirectorHandler : IRequestHandler<UpdateDirectorCommand, ResultService<UpdateDirectorResponse>>
 {
     private readonly IDirectorWriteRepository _repository;

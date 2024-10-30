@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using MoviesRental.Application.Services.Directors.Commands.UpdateDirector;
 using MoviesRental.Application.Services.Results;
 using MoviesRental.Domain.Interfaces.IDirector;
 

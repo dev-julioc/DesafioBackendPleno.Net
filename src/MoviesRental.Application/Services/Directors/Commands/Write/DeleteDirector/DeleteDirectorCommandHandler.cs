@@ -25,7 +25,10 @@ public class DeleteDirectorCommandHandler : IRequestHandler<DeleteDirectorComman
         if (director.Dvds.Any(x => x.IsAvailable))
             return ResultService.Fail("Failed to delete director!");
 
-        await _writeRepository.DeleteDirectorAsync(director);
+        var response = await _writeRepository.DeleteDirectorAsync(director);
+
+        if (!response)
+            return ResultService.Fail<bool>("Failed to delete director!");
 
         return ResultService.Ok("Deleted!");
     }

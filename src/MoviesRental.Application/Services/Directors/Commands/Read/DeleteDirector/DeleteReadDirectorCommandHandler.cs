@@ -22,7 +22,7 @@ public class DeleteReadDirectorCommandHandler : IRequestHandler<DeleteReadDirect
         if (director is null)
             return ResultService.NotFound<bool>("Director not found!");
 
-        var response = await _repository.DeleteDirectorAsync(director);
+        var response = await _repository.DeleteDirectorAsync(request.id);
 
         if (!response)
             return ResultService.Fail<bool>("Failed to delete director!");

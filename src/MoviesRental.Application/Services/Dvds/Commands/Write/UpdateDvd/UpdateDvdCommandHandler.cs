@@ -3,7 +3,7 @@ using MoviesRental.Application.Services.Results;
 using MoviesRental.Domain.Interfaces.IDirector;
 using MoviesRental.Domain.Interfaces.IDvd;
 
-namespace MoviesRental.Application.Services.Dvds.Commands.UpdateDvd;
+namespace MoviesRental.Application.Services.Dvds.Commands.Write.UpdateDvd;
 public class UpdateDvdCommandHandler : IRequestHandler<UpdateDvdCommand, ResultService<UpdateDvdResponse>>
 {
     private readonly IDvdWriteRepository _dvdRepository;
@@ -45,12 +45,12 @@ public class UpdateDvdCommandHandler : IRequestHandler<UpdateDvdCommand, ResultS
 
         var response = new UpdateDvdResponse
         (
-            dvd.Id.ToString(), 
-            dvd.Title, 
-            dvd.Genre.ToString(), 
-            dvd.Publisher, 
-            dvd.Copies, 
-            dvd.DirectorId.ToString(), 
+            dvd.Id.ToString(),
+            dvd.Title,
+            dvd.Genre.ToString(),
+            dvd.Publisher,
+            dvd.Copies,
+            dvd.DirectorId.ToString(),
             dvd.UpdatedAt
         );
 

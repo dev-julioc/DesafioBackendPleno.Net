@@ -2,7 +2,7 @@
 using MoviesRental.Application.Services.Results;
 using MoviesRental.Domain.Enums;
 
-namespace MoviesRental.Application.Services.Dvds.Commands.UpdateDvd;
+namespace MoviesRental.Application.Services.Dvds.Commands.Write.UpdateDvd;
 public record UpdateDvdCommand
     (
         Guid Id,
@@ -11,5 +11,5 @@ public record UpdateDvdCommand
         DateTime Published,
         Guid DirectorId,
         int Copies
-    
+
     ) : IRequest<ResultService<UpdateDvdResponse>>;

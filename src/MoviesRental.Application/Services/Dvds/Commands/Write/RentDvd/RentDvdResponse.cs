@@ -1,4 +1,4 @@
-﻿namespace MoviesRental.Application.Services.Dvds.Commands.RentDvd;
+﻿namespace MoviesRental.Application.Services.Dvds.Commands.Write.RentDvd;
 public record RentDvdResponse
     (
         string Id,

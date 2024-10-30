@@ -1,4 +1,4 @@
-﻿namespace MoviesRental.Application.Services.Dvds.Commands.CreateDvd;
+﻿namespace MoviesRental.Application.Services.Dvds.Commands.Write.CreateDvd;
 public record CreateDvdResponse
     (
         string Id,

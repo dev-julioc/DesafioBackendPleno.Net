@@ -3,7 +3,7 @@ using MoviesRental.Application.Services.Results;
 using MoviesRental.Domain.Entities.Write;
 using MoviesRental.Domain.Interfaces.IDvd;
 
-namespace MoviesRental.Application.Services.Dvds.Commands.CreateDvd;
+namespace MoviesRental.Application.Services.Dvds.Commands.Write.CreateDvd;
 public class CreateDvdCommandHandler : IRequestHandler<CreateDvdCommand, ResultService<CreateDvdResponse>>
 {
     private readonly IDvdWriteRepository _repository;
@@ -41,6 +41,6 @@ public class CreateDvdCommandHandler : IRequestHandler<CreateDvdCommand, ResultS
             );
 
         return ResultService.Ok(response);
-        
+
     }
 }

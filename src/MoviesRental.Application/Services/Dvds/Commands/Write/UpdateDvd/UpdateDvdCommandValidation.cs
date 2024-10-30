@@ -1,11 +1,14 @@
 ﻿using FluentValidation;
 using MoviesRental.Domain.Entities.Write;
 
-namespace MoviesRental.Application.Services.Dvds.Commands.CreateDvd;
-public class CreateDvdCommandValidation : AbstractValidator<CreateDvdCommand>   
+namespace MoviesRental.Application.Services.Dvds.Commands.Write.UpdateDvd;
+public class UpdateDvdCommandValidation : AbstractValidator<UpdateDvdCommand>
 {
-    public CreateDvdCommandValidation()
+    public UpdateDvdCommandValidation()
     {
+        RuleFor(x => x.Id)
+            .NotEqual(Guid.Empty).WithMessage(Dvd.INVALID_ERROR_MESSAGE);
+
         RuleFor(x => x.Title)
             .NotEmpty().WithMessage(Dvd.EMPTY_STRING_ERROR_MESSAGE)
             .NotNull().WithMessage(Dvd.EMPTY_STRING_ERROR_MESSAGE)
@@ -24,6 +27,5 @@ public class CreateDvdCommandValidation : AbstractValidator<CreateDvdCommand>
 
         RuleFor(x => x.DirectorId)
             .NotEqual(Guid.Empty).WithMessage(Dvd.INVALID_ERROR_MESSAGE);
-
     }
 }

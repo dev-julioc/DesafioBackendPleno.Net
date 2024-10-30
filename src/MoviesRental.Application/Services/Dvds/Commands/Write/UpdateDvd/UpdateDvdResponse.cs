@@ -1,4 +1,4 @@
-﻿namespace MoviesRental.Application.Services.Dvds.Commands.UpdateDvd;
+﻿namespace MoviesRental.Application.Services.Dvds.Commands.Write.UpdateDvd;
 public record UpdateDvdResponse
     (
         string Id,

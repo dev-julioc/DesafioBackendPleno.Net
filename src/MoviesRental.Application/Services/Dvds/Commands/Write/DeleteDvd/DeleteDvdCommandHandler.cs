@@ -2,7 +2,7 @@
 using MoviesRental.Application.Services.Results;
 using MoviesRental.Domain.Interfaces.IDvd;
 
-namespace MoviesRental.Application.Services.Dvds.Commands.DeleteDvd;
+namespace MoviesRental.Application.Services.Dvds.Commands.Write.DeleteDvd;
 public class DeleteDvdCommandHandler : IRequestHandler<DeleteDvdCommand, ResultService<DeleteDvdResponse>>
 {
     private readonly IDvdWriteRepository _repository;

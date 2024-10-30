@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using MoviesRental.Application.Services.Results;
 
-namespace MoviesRental.Application.Services.Dvds.Commands.CreateDvd;
+namespace MoviesRental.Application.Services.Dvds.Commands.Write.CreateDvd;
 public record CreateDvdCommand
     (
         string Title,
@@ -9,5 +9,5 @@ public record CreateDvdCommand
         DateTime Published,
         int Copies,
         Guid DirectorId
-    
+
     ) : IRequest<ResultService<CreateDvdResponse>>;

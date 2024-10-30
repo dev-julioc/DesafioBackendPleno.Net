@@ -2,7 +2,7 @@
 using MoviesRental.Domain.Interfaces.IDvd;
 using MoviesRental.Infra.Data.Context;
 
-namespace MoviesRental.Infra.Data.Repositories;
+namespace MoviesRental.Infra.Data.Repositories.Write;
 public class DvdWriteRepository : IDvdWriteRepository
 {
     private readonly AppWriteDbContext _context;
